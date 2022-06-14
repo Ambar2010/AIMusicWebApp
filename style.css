@@ -41,6 +41,6 @@ body {
 canvas {
     border: 5px solid white;
     border-radius: 20px;
-    margin: 60px;
+    margin: 70px;
     box-shadow: 5px 5px 10px gray;
 }
