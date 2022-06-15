@@ -9,6 +9,7 @@
  rightWristY = 0;
  
  scoreLeftWrist = 0;
+ scoreRightWrist = 0;
 
  function preload() {
 song = loadSound("music.mp3");
@@ -37,7 +38,17 @@ function draw() {
     image(video,0,0,600,500);
     fill('#FF0000');
     stroke('#FF0000');
-     if(scoreLeftWrist>0.2) {
+    if(scoreRightWrist >0.2)
+{
+    song2.play();
+        circle(rightWristX, rightWristY, 20);
+        document.getElementById("song_name").innerHTML = "Song Name = Peter Pan Song";
+        song.setVolume(1);
+        song.rate(1);
+        song.stop();
+}
+
+    if(scoreLeftWrist>0.2) {
         song.play();
         circle(leftWristX, leftWristY, 20);
         document.getElementById("song_name").innerHTML = "Song Name = Free Fire Song";
@@ -51,7 +62,8 @@ function gotPoses(results) {
         console.log(results);
 
         scoreLeftWrist = results[0].pose.keypoints[9].score;
-        console.log("Score left Wrist = " + scoreLeftWrist);
+        scoreRightWrist = results[0].pose.keypoints[10].score;
+        console.log("Score Right Wrist = " + scoreRightWrist + " Score Left Wrist = " + scoreLeftWrist);
 
         leftWristX = results[0].pose.leftWrist.x;
         leftWristY = results[0].pose.leftWrist.y;
